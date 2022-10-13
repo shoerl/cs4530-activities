@@ -23,9 +23,21 @@ describe('TranscriptManager', () => {
       const grade = db.getGrade(studentID, 'test course');
       expect(grade).toBe(100);
     })
+    it('Should throw an error if student already has a grade', () => {
+      const studentID = db.addStudent('test student');
+      db.addGrade(studentID, 'test course', 100);
+      expect(() => db.addGrade(studentID, 'test course', 95)).toThrowError();
+    })
     it('Should throw an error if the student ID is invalid', () =>{
       expect(() => db.addGrade(1, 'test course', 100)).toThrowError();
     });
+  })
+  describe('Get grade', () => {
+    it('Should throw an error if student does not have grade', () => {
+      const studentID = db.addStudent('test student');
+      expect(() => db.getGrade(studentID, 'math')).toThrowError();
+
+    })
   })
   describe('getStudentIDs', () => {
     it('Should return only the students who match the name', () => {
