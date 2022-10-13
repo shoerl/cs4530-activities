@@ -16,6 +16,7 @@ describe('TranscriptManager', () => {
       expect(ret).toEqual(1);
     });
   })
+
   describe('Adding grades', () => {
     it('should add the grade to the transcript', () => {
       const studentID = db.addStudent('test student');
@@ -50,6 +51,13 @@ describe('TranscriptManager', () => {
       expect(db.getStudentIDs('ripley')).toEqual([ripley]);
     })
   });
+  describe('Getting transcript of new student', () => {
+    it('Transcript should be empty', () => {
+      const avery1 = db.addStudent('avery');
+      expect(db.getTranscript(avery1)?.grades.length === 0);
+
+    })
+  })
   describe('Deleting students', () => {
     it('Should result in the students\' transcript no longer being available', () => {
       const studentID = db.addStudent('test student');
