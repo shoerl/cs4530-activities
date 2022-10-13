@@ -1,0 +1,16 @@
+Group: Sean Hoerl & Kelly Dang
+
+2. Testable Behaviors
+
+* Given a course, student, and courseGrade, addGrade should add a grade corresponding to the supplied course and student to the database
+* addGrade should not return anything as it returns type void
+* addGrade should permit adding multiple courseGrades for a student (assuming they are all for unique courses)
+* addGrade should permit overriding a grade
+* If null is supplied for the course, student, or courseGrade, addGrade should throw an exception
+* If the supplied student has an id of null, addGrade should throw an exception
+* If either of the supplied course names are empty string, addGrade should throw an exception
+* If either of the supplied course names don't match the other, addGrade should throw an exception
+
+3. Design Decisions
+1. Throw exception if null is provided for any of the arguments
+2. Allow overriding a grade rather than throwing an exception
